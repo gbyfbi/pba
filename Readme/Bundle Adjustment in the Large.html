@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0054)http://grail.cs.washington.edu/projects/bal/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>
+    Bundle Adjustment in the Large
+    </title>
+    <link type="text/css" rel="stylesheet" href="./Bundle Adjustment in the Large_files/default.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><style type="text/css">/* This is not a zero-length file! */</style><style type="text/css">/* This is not a zero-length file! */</style></head>
+  <body data-feedly-mini="yes">
+
+
+<h1 style="text-align: center">Bundle Adjustment in the Large</h1>
+
+<p>
+Recent work in Structure from Motion has demonstrated the possibility of reconstructing geometry from large-scale community photo collections. Bundle adjustment, the joint non-linear refinement of camera and point parameters, is a key component of most SfM systems, and one which can consume a significant amount of time for large problems. As the number of photos in such collections continues to grow into the hundreds of thousands or even millions, the scalability of bundle adjustment algorithms has become a critical issue.
+</p>
+
+<p>
+In this project, we consider the design and implementation of a new
+Inexact Newton type bundle adjustment algorithm, which uses
+substantially less time and memory than standard Schur complement
+based methods, without compromising on the quality of the solution. We
+explore the use of the Conjugate Gradients algorithm for calculating
+the Newton step and its performance as a function of some simple and
+computationally efficient preconditioners. We also show that the use of the Schur complement
+is not limited to factorization-based methods,  how it can be used as part of the Conjugate Gradients (CG) method without incurring the computational cost of actually calculating and storing it in memory, and how this use is equivalent to the choice of a particular preconditioner.
+</p>
+
+<p>
+This research is part
+of <a href="http://grail.cs.washington.edu/projects/cpc/">Community
+    Photo Collections</a>  project at the University of
+Washington <a href="http://grail.cs.washington.edu/">GRAIL</a> Lab. which explores the use of large scale internet image
+collections for furthering research in computer vision and
+graphics.
+</p>
+
+	  
+
+	    
+	  
+	
+
+<h3>Team</h3>
+<ul>
+  <li>
+    <a href="http://www.cs.washington.edu/homes/sagarwal/">
+      Sameer Agarwal</a>, <a href="http://washington.edu/">University of Washington
+    </a>
+  </li>
+
+   <li>
+    <a href="http://www.cs.cornell.edu/~snavely">
+      Noah Snavely</a>, <a href="http://www.cornell.edu/">Cornell University
+    </a>
+  </li>
+  <li>
+    <a href="http://www.cs.washington.edu/homes/seitz/">
+      Steve Seitz</a>, <a href="http://washington.edu/">University of Washington
+    </a>
+  </li>
+  <li>
+    <a href="http://research.microsoft.com/~szeliski/">
+      Richard Szeliski</a>,
+    <a href="http://research.microsoft.com/">
+      Microsoft Research
+    </a>
+  </li>
+</ul>
+
+
+
+<h3>Paper</h3>
+<p> <a href="http://grail.cs.washington.edu/projects/bal/bal.pdf"> Bundle Adjustment in the Large</a><br>
+    Sameer Agarwal, Noah Snavely,  Steven M. Seitz and Richard
+    Szeliski<br>
+      <a href="http://www.ics.forth.gr/eccv2010/intro.php">European Conference on Computer Vision, 2010 </a>, Crete, Greece.<br>
+<a href="http://grail.cs.washington.edu/projects/bal/supp.pdf">Supplementary Material</a><br>
+<a href="http://grail.cs.washington.edu/projects/bal/poster.pdf">Poster</a>
+</p>
+
+<h3>Software &amp; Data</h3>
+<p>As part of this project we will be releasing all the test problems, software and performance data reported in the paper. Currently we have the test problems available for download. The code shall be available shortly.
+</p>
+
+<p>We experimented with two sources of data:
+</p><ol>
+<li>Images captured at a regular rate using a Ladybug camera mounted on a moving vehicle.
+        Image matching was done by exploiting the temporal order of the images and the GPS information captured at the time of image capture. </li>
+
+        <li>Images downloaded from Flickr.com and matched using the system described in <a href="http://grail.cs.washington.edu/rome">Building Rome in a Day</a>. We used images from Trafalgar Square and the cities of Dubrovnik, Venice, and Rome.
+</li></ol>
+<p></p>
+
+<p>
+For Flickr photographs, the matched images were decomposed into a
+skeletal set (i.e., a sparse core of images) and a set of leaf
+images.  The skeletal set was reconstructed
+first, then the leaf images were added to it via resectioning followed
+by triangulation of the remaing 3D points. The skeletal sets and the
+Ladybug datasets were reconstructed incrementally using a modified
+version of <a href="http://phototour.cs.washington.edu/bundler/">Bundler</a>, which was instrumented to
+dump intermediate unoptimized reconstructions to disk. This gave rise
+to the Ladybug, Trafalgar Square, Dubrovnik and Venice  datasets. We refer to the bundle adjustment
+problems obtained after adding the leaf images to the skeletal set and
+triangulating the remaing points as the Final problems.
+</p>
+
+
+ Available Datasets
+<ol>
+<li><a href="http://grail.cs.washington.edu/projects/bal/ladybug.html">Ladybug</a></li>
+<li><a href="http://grail.cs.washington.edu/projects/bal/trafalgar.html">Trafalgar Square</a></li>
+<li><a href="http://grail.cs.washington.edu/projects/bal/dubrovnik.html">Dubrovnik</a></li>
+<li><a href="http://grail.cs.washington.edu/projects/bal/venice.html">Venice</a></li>
+<li><a href="http://grail.cs.washington.edu/projects/bal/final.html">Final</a></li>
+</ol>
+
+<h4>Camera Model</h4>
+We use a pinhole camera model; the parameters we estimate for each
+camera area rotation <tt>R</tt>, a translation
+<tt>t</tt>, a focal length <tt>f</tt> and  two radial distortion parameters
+<tt>k1</tt> and <tt>k2</tt>.  The formula for projecting a 3D point <tt>X</tt> into a camera
+<tt>R,t,f,k1,k2</tt> is:
+<pre><tt>P  =  R * X + t</tt>       (conversion from world to camera coordinates)
+<tt>p  = -P / P.z</tt>         (perspective division)
+<tt>p' =  f * r(p) * p</tt>    (conversion to pixel coordinates)
+</pre>
+
+where <tt>P.z</tt> is the third (<tt>z</tt>) coordinate of <tt>P</tt>.  In the last
+equation, <tt>r(p)</tt> is a function that computes a scaling factor to
+undo the radial distortion:
+
+<pre><tt>r(p) = 1.0 + k1 * ||p||^2 + k2 * ||p||^4.</tt>
+</pre>
+
+<p>
+This gives a projection in pixels, where the origin of the image is the
+center of the image, the positive x-axis points right, and the positive
+y-axis points up (in addition, in the camera coordinate system, the
+positive z-axis points backwards, so the camera is looking down the
+negative z-axis, as in OpenGL).
+</p>
+
+<h4>Data Format</h4>
+<p>
+Each problem is provided as a <a href="http://www.bzip.org/">bzip2</a> compressed text file in the following format.
+</p>
+<pre><tt>
+&lt;num_cameras&gt; &lt;num_points&gt; &lt;num_observations&gt;
+&lt;camera_index_1&gt; &lt;point_index_1&gt; &lt;x_1&gt; &lt;y_1&gt;
+...
+&lt;camera_index_num_observations&gt; &lt;point_index_num_observations&gt; &lt;x_num_observations&gt; &lt;y_num_observations&gt;
+&lt;camera_1&gt;
+...
+&lt;camera_num_cameras&gt;
+&lt;point_1&gt;
+...
+&lt;point_num_points&gt;
+</tt>
+</pre>
+
+<p>Where, there camera and point indices start from 0. Each camera is a set of 9 parameters - R,t,f,k1 and k2. The rotation R is specified as a <a href="http://en.wikipedia.org/wiki/Rodrigues&#39;_rotation_formula">Rodrigues' vector</a>.</p>
+
+
+<div id="feedly-mini" title="feedly Mini tookit"></div><div id="dltFloatingOptions" class="langToolFloatingOptions"></div></body><div></div></html>
